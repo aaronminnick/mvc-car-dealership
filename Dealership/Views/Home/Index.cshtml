@@ -1,7 +1,19 @@
+@using Dealership.Models;
+
 <!DOCTYPE html>
 <head>
   <title>Car Dealership</title>
 </head>
 <body>
   <h1>Welcome to the Car Dealership</h1>
+  <p>Cars for sale:</p>
+  @if (Model.Count == 0)
+  {
+    <p>No cars on the lot.</p>
+  }
+  @foreach (Car car in Model)
+  {
+    <li>@car.MakeModel: @car.Mileage miles. Price: $@car.Price.ToString().00</li>
+  }
+  <a href="/addcar">Add a car to the lot.</a>
 </body>
